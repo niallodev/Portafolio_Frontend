@@ -1,5 +1,5 @@
 import { FaGithub, FaEye } from 'react-icons/fa'; // Para agregar iconos de GitHub y vista previa
-import { FaReact, FaNodeJs, FaDatabase } from 'react-icons/fa'; // Ejemplo de íconos
+import { FaReact, FaNodeJs, FaDatabase, FaCss3, FaHtml5, FaBrain } from 'react-icons/fa'; // Ejemplo de íconos
 import Slider from 'react-slick'; // Carrusel
 import "slick-carousel/slick/slick.css"; // Importa estilos básicos
 import "slick-carousel/slick/slick-theme.css"; // Importa estilos del tema
@@ -9,10 +9,11 @@ function Projects() {
   const projects = [
     {
       title: 'Proyecto 1',
-      description: 'Descripción breve del proyecto 1. Aquí puedes hablar de las tecnologías usadas y la solución que ofreciste.',
-      demoLink: '#',  // Enlace de la demo
-      githubLink: '#', // Enlace de GitHub
-      technologies: [<FaReact />, <FaNodeJs />, <FaDatabase />], // Íconos de tecnologías
+      // description: 'Descripción breve del proyecto 1. Aquí puedes hablar de las tecnologías usadas y la solución que ofreciste.',
+      description: 'El proyecto "El Pacto de los Espectros" es un cómic interactivo desarrollado para mostrar habilidades técnicas y como regalo personal. Utiliza tecnologías web como HTML, CSS y React para crear una experiencia visual dinámica. Las ilustraciones fueron generadas con la ayuda de Leonardo.ai, incorporando un estilo único y detallado. Además, se implementaron herramientas de colaboración como Git y GitHub para el control de versiones y el trabajo en equipo. Este proyecto tiene como objetivo combinar narrativa visual con tecnologías modernas.',
+      demoLink: 'https://niallodev.github.io/Commic-El-Pacto-de-los-Espectros/',  // Enlace de la demo
+      githubLink: 'https://github.com/niallodev/Commic-El-Pacto-de-los-Espectros', // Enlace de GitHub
+      technologies: [<FaReact />, <FaCss3 />, <FaHtml5 />,  <FaGithub />, <FaBrain /> ], // Íconos de tecnologías
     },
     {
       title: 'Proyecto 2',
