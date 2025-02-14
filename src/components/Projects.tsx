@@ -1,5 +1,5 @@
 import { FaGithub, FaEye } from 'react-icons/fa'; // Para agregar iconos de GitHub y vista previa
-import { FaReact, FaNodeJs, FaDatabase, FaCss3, FaHtml5, FaBrain, FaRobot } from 'react-icons/fa'; // Ejemplo de íconos
+import { FaReact, FaCss3, FaHtml5, FaBrain, FaRobot } from 'react-icons/fa'; // Ejemplo de íconos
 import Slider from 'react-slick'; // Carrusel
 import "slick-carousel/slick/slick.css"; // Importa estilos básicos
 import "slick-carousel/slick/slick-theme.css"; // Importa estilos del tema
