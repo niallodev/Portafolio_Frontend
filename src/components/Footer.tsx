@@ -1,4 +1,4 @@
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa'; // Asegúrate de instalar react-icons
+import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Asegúrate de instalar react-icons
 
 function Footer() {
   return (
@@ -7,14 +7,11 @@ function Footer() {
         <p>&copy; 2024 Nicolás Alexander Loor Bazurto. Todos los derechos reservados.</p>
       </div>
       <div className="flex justify-center space-x-6 mb-4">
-        <a href="https://github.com/nicolas-loor" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-500 transition-colors">
+        <a href="https://github.com/niallodev" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-500 transition-colors">
           <FaGithub className="text-2xl" />
         </a>
-        <a href="https://www.linkedin.com/in/nicolas-loor" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-500 transition-colors">
+        <a href="https://www.linkedin.com/in/nicol%C3%A1s-loor-bazurto-5172121a1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-500 transition-colors">
           <FaLinkedin className="text-2xl" />
-        </a>
-        <a href="https://twitter.com/nicolas_loor" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-500 transition-colors">
-          <FaTwitter className="text-2xl" />
         </a>
       </div>
       <div className="text-sm text-gray-400">
