@@ -102,7 +102,7 @@ function Contact() {
             placeholder="Nombre"
             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 transition-all"
           />
-          {errors.name && <p className="text-red-500 text-sm">{errors.name}</p>}
+          {errors.name && <p className="text-red-500 text-xl">{errors.name}</p>}
         </div>
         <div className="mb-4">
           <input
@@ -113,7 +113,7 @@ function Contact() {
             placeholder="Correo"
             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 transition-all"
           />
-          {errors.email && <p className="text-red-500 text-sm">{errors.email}</p>}
+          {errors.email && <p className="text-red-500 text-xl">{errors.email}</p>}
         </div>
         <div className="mb-6">
           <textarea
@@ -124,7 +124,7 @@ function Contact() {
             className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 transition-all"
             rows={4}
           ></textarea>
-          {errors.message && <p className="text-red-500 text-sm">{errors.message}</p>}
+          {errors.message && <p className="text-red-500 text-xl">{errors.message}</p>}
         </div>
         <button
           type="submit"
