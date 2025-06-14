@@ -27,7 +27,8 @@
 
 /* FLIP CARD */
 .flip-card {
-  min-height: 400px;
+  min-height: 200px;
+  /* min-height: 400px; */
   max-height: 450px;
   perspective: 1000px;
   width: 100%; /* Asegura que ocupe todo el contenedor */

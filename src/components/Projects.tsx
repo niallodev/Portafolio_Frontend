@@ -1,5 +1,9 @@
-import { FaGithub, FaEye } from 'react-icons/fa'; // Para agregar iconos de GitHub y vista previa
-import { FaReact, FaCss3, FaHtml5, FaBrain, FaRobot } from 'react-icons/fa'; // Ejemplo de íconos
+import { FaGithub, FaEye, FaReact, FaCss3, FaHtml5, FaBrain, FaRobot 
+  , FaBootstrap, FaGit, FaNodeJs 
+} from 'react-icons/fa'; // Para agregar iconos de GitHub y vista previa
+import { 
+  SiTypescript, SiPostgresql, SiExpress, SiSocketdotio, SiTailwindcss, SiCloudinary 
+} from 'react-icons/si';
 import Slider from 'react-slick'; // Carrusel
 import "slick-carousel/slick/slick.css"; // Importa estilos básicos
 import "slick-carousel/slick/slick-theme.css"; // Importa estilos del tema
@@ -15,6 +19,26 @@ function Projects() {
       githubLink: 'https://github.com/niallodev/Commic-El-Pacto-de-los-Espectros', // Enlace de GitHub
       technologies: [<FaReact />, <FaCss3 />, <FaHtml5 />,  <FaGithub />, <FaRobot />, <FaBrain /> ], // Íconos de tecnologías,
       image: 'https://niallodev.github.io/Commic-El-Pacto-de-los-Espectros/img/pagina_1_cuadro_1.jpg'
+    },
+    {
+      title: 'Gomoriecut Restaurant',
+      description: 'Aplicación web desarrollada para optimizar la gestión operativa de un restaurante. Incluye funcionalidades específicas para cada uno de los Rol (administrador, trabajador (cada trabajador va a tener un cargo especifico), cliente). Permitiedo gestionar las funcionalidades para cada Rol. Desarrollado con React y TypeScript en el frontend, empleando buenas prácticas de diseño de componentes, control de estado y comunicación entre vistas. Ideal para mejorar la eficiencia y trazabilidad del servicio en restaurantes.',
+      demoLink: 'https://charming-lebkuchen-ef9bfc.netlify.app/auth',  // Enlace de la demo
+      // githubLink: 'https://github.com/niallodev/Commic-El-Pacto-de-los-Espectros', // Enlace de GitHub
+      technologies: [<FaHtml5 />, 
+    <FaCss3 />, 
+    <SiTailwindcss />, 
+    <FaBootstrap />, 
+    <FaReact />, 
+    <SiTypescript />, 
+    <SiPostgresql />, 
+    <FaNodeJs />, 
+    <SiExpress />, 
+    <SiSocketdotio />, 
+    <SiCloudinary />, 
+    <FaGit />, 
+    <FaGithub /> ], // Íconos de tecnologías,
+      image: 'https://charming-lebkuchen-ef9bfc.netlify.app/config/hero.jpg'
     },
    
   ];
@@ -37,6 +61,15 @@ function Projects() {
     touchThreshold: 15, // Sensibilidad al toque
     // variableWidth: true, // Para slides de ancho variable
     adaptiveHeight: true, // Ajusta el alto automáticamente según el contenido
+
+    appendDots: (dots:any) => (
+      <div style={{ marginBottom: '-10px' }}>
+        <ul>
+          {dots}
+        </ul>
+      </div>
+    ),
+    
 
     responsive: [
       {
@@ -89,6 +122,7 @@ function Projects() {
                 </Slider>
               </div>
               <br />
+              <br />
               <div className="flex justify-between">
                 <a
                   href={project.demoLink}
@@ -98,23 +132,23 @@ function Projects() {
                 >
                   <FaEye className="mr-2" /> Ver Demo
                 </a>
-                <a
-                  href={project.githubLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-600 hover:text-teal-800 flex items-center z-10"
-                >
-                  <FaGithub className="mr-2" /> GitHub
-                </a>
+                {project.githubLink && (
+                  <a
+                    href={project.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-teal-600 hover:text-teal-800 flex items-center z-10"
+                  >
+                    <FaGithub className="mr-2" /> GitHub
+                  </a>
+                )}
+                
               </div>
           </div>
         </div>
       </div>
 
       ))}
-      
-       
-        
       </div>
     </section>
   );
