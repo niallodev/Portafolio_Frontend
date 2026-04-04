@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { FaGithub, FaLinkedinIn, FaEnvelope } from 'react-icons/fa6';
+import { profile } from '../data/site';
 
 interface FormErrors {
   name?: string;
@@ -12,6 +14,10 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState<{ type: 'idle' | 'success' | 'error'; text: string }>({
+    type: 'idle',
+    text: '',
+  });
   
   // Validación
   const validate = () => {
@@ -51,6 +57,7 @@ function Contact() {
   // Manejo del formulario
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setStatus({ type: 'idle', text: '' });
 
     const validationErrors = validate();
 
@@ -74,66 +81,152 @@ function Contact() {
       });
 
       if (response.ok) {
-        alert("Mensaje enviado exitosamente!");
+        setStatus({ type: 'success', text: 'Mensaje enviado. Te respondere lo antes posible.' });
         setName("");
         setEmail("");
         setMessage("");
         setErrors({});
       } else {
-        alert("Hubo un error al enviar el mensaje. Intenta de nuevo.");
+        setStatus({ type: 'error', text: 'No pude enviar el mensaje. Intenta de nuevo en unos minutos.' });
       }
     } catch (error) {
-      alert("Error al conectar con el servidor. Por favor, intenta más tarde.");
+      setStatus({ type: 'error', text: 'Error de conexion. Intenta mas tarde.' });
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <section id="contact" className="py-20 px-5 bg-gradient-to-r from-teal-400 to-blue-500 text-black text-center">
-      <h2 className="text-4xl font-extrabold mb-8">Contacto</h2>
-      <form className="mt-6 max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg" onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Nombre"
-            className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 transition-all"
-          />
-          {errors.name && <p className="text-red-500 text-xl">{errors.name}</p>}
+    <section id="contact" className="relative py-16">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="rounded-[2.5rem] border border-ink-900/10 bg-sand-50/70 p-6 shadow-soft md:p-10">
+          <div className="grid gap-10 md:grid-cols-2 md:items-start">
+            <div>
+              <p className="font-serif text-sm font-semibold uppercase tracking-[0.18em] text-copper-600">
+                Contacto
+              </p>
+              <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+                Hablemos de tu vacante.
+              </h2>
+              <p className="mt-4 text-sm leading-relaxed text-ink-700">
+                Si te interesa mi perfil, escribeme por correo o LinkedIn. Tambien puedes usar el formulario.
+              </p>
+
+              <div className="mt-6 grid gap-3">
+                <a
+                  href={`mailto:${profile.email}`}
+                  className="inline-flex items-center gap-3 rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+                >
+                  <FaEnvelope aria-hidden="true" /> {profile.email}
+                </a>
+                <div className="grid grid-cols-2 gap-3">
+                  <a
+                    href={profile.links.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+                  >
+                    <FaGithub aria-hidden="true" /> GitHub
+                  </a>
+                  <a
+                    href={profile.links.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+                  >
+                    <FaLinkedinIn aria-hidden="true" /> LinkedIn
+                  </a>
+                </div>
+              </div>
+
+              {status.type !== 'idle' ? (
+                <div
+                  className={[
+                    'mt-6 rounded-2xl border px-4 py-3 text-sm font-semibold',
+                    status.type === 'success'
+                      ? 'border-tealish-500/30 bg-tealish-500/10 text-tealish-600'
+                      : 'border-copper-500/30 bg-copper-500/10 text-copper-600',
+                  ].join(' ')}
+                >
+                  {status.text}
+                </div>
+              ) : null}
+            </div>
+
+            <form onSubmit={handleSubmit} className="rounded-[2rem] bg-sand-100 p-6 shadow-soft">
+              <div className="grid gap-4">
+                <div>
+                  <label className="text-xs font-semibold uppercase tracking-widest text-ink-600">
+                    Nombre
+                  </label>
+                  <input
+                    type="text"
+                    name="name"
+                    value={name}
+                    onChange={(e) => setName(e.target.value)}
+                    placeholder="Tu nombre"
+                    className="mt-2 w-full rounded-xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm text-ink-900 shadow-soft outline-none transition focus:border-tealish-500/40 focus:ring-4 focus:ring-tealish-500/15"
+                  />
+                  {errors.name ? (
+                    <p className="mt-2 text-xs font-semibold text-copper-600">{errors.name}</p>
+                  ) : null}
+                </div>
+
+                <div>
+                  <label className="text-xs font-semibold uppercase tracking-widest text-ink-600">
+                    Correo
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    placeholder="tu@correo.com"
+                    className="mt-2 w-full rounded-xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm text-ink-900 shadow-soft outline-none transition focus:border-tealish-500/40 focus:ring-4 focus:ring-tealish-500/15"
+                  />
+                  {errors.email ? (
+                    <p className="mt-2 text-xs font-semibold text-copper-600">{errors.email}</p>
+                  ) : null}
+                </div>
+
+                <div>
+                  <label className="text-xs font-semibold uppercase tracking-widest text-ink-600">
+                    Mensaje
+                  </label>
+                  <textarea
+                    name="message"
+                    value={message}
+                    onChange={(e) => setMessage(e.target.value)}
+                    placeholder="Cuentame sobre la vacante, el stack y el alcance..."
+                    className="mt-2 w-full resize-none rounded-xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm text-ink-900 shadow-soft outline-none transition focus:border-tealish-500/40 focus:ring-4 focus:ring-tealish-500/15"
+                    rows={5}
+                  />
+                  {errors.message ? (
+                    <p className="mt-2 text-xs font-semibold text-copper-600">{errors.message}</p>
+                  ) : null}
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={[
+                    'inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold shadow-soft transition',
+                    isSubmitting
+                      ? 'cursor-not-allowed bg-ink-900/40 text-sand-50'
+                      : 'bg-ink-900 text-sand-50 hover:bg-ink-950',
+                  ].join(' ')}
+                >
+                  {isSubmitting ? 'Enviando...' : 'Enviar mensaje'}
+                </button>
+
+                <p className="text-xs text-ink-600">
+                  Al enviar, aceptas compartir tu nombre/correo solo para responderte.
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
-        <div className="mb-4">
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Correo"
-            className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 transition-all"
-          />
-          {errors.email && <p className="text-red-500 text-xl">{errors.email}</p>}
-        </div>
-        <div className="mb-6">
-          <textarea
-            name="message"
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            placeholder="Mensaje"
-            className="w-full p-3 border-2 border-gray-300 rounded-lg focus:outline-none focus:border-teal-500 transition-all"
-            rows={4}
-          ></textarea>
-          {errors.message && <p className="text-red-500 text-xl">{errors.message}</p>}
-        </div>
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          className={`w-full ${isSubmitting ? 'bg-gray-400' : 'bg-teal-500'} text-white py-3 rounded-lg hover:bg-teal-600 transition-all`}
-        >
-          {isSubmitting ? "Enviando..." : "Enviar"}
-        </button>
-      </form>
+      </div>
     </section>
   );
 }

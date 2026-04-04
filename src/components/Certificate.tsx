@@ -1,47 +1,55 @@
-function Certificate () {
-    const certificates = [
-        {
-            title: "[New] Ultimate AWS Certified Cloud Practitioner CLF-C02 2025",
-            issuer: "Udemy",
-            date: "Mayo 2025",
-            link: "https://www.udemy.com/certificate/UC-f598d7fd-6627-4a6c-b6b4-1427289a0d12/?utm_campaign=email&utm_medium=email&utm_source=sendgrid.com",
-            image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ5_MkobRjsuMfSSp3eubAZ3OFrGXGj95kzwmizFzY3HhUrgOEeCvBLPQUNUEykULsdmMc&usqp=CAU",
-        },
-        // más certificados...
-    ];
-    
-    return (
-    <section id="certificates" className="py-12 bg-gray-50">
-      <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-10 text-teal-700">
-          Certificaciones & Cursos
-        </h2>
+import { FaAward } from 'react-icons/fa6';
+import { certifications } from '../data/site';
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {certificates.map((cert, index) => (
+function Certificate() {
+  return (
+    <section id="certificates" className="relative py-16">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="font-serif text-sm font-semibold uppercase tracking-[0.18em] text-tealish-600">
+              Certificaciones
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+              Aprendizaje continuo.
+            </h2>
+          </div>
+          <p className="max-w-xl text-sm text-ink-700">
+            Cursos y certificaciones que complementan mi stack para proyectos reales.
+          </p>
+        </div>
+
+        <div className="mt-10 grid gap-6 md:grid-cols-2">
+          {certifications.map((c) => (
             <a
-              key={index}
-              href={cert.link}
+              key={c.href}
+              href={c.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-white shadow-md rounded-lg p-6 flex flex-col items-center hover:shadow-xl transition-shadow duration-300"
+              className="group rounded-[2rem] border border-ink-900/10 bg-sand-50/70 p-6 shadow-soft transition hover:-translate-y-1 hover:shadow-lift"
             >
-              <img
-                src={cert.image}
-                alt={`${cert.issuer} logo`}
-                className="h-16 mb-4 object-contain"
-              />
-              <h3 className="text-xl font-semibold text-center mb-2">
-                {cert.title}
-              </h3>
-              <p className="text-sm text-gray-600 mb-1">{cert.issuer}</p>
-              <p className="text-sm text-gray-400">{cert.date}</p>
+              <div className="flex items-start gap-4">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-ink-950 text-sand-50 shadow-soft">
+                  <FaAward aria-hidden="true" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-display text-xl font-semibold text-ink-950">
+                    {c.title}
+                  </h3>
+                  <p className="mt-1 text-sm text-ink-700">
+                    {c.issuer} <span className="text-ink-600">•</span> {c.date}
+                  </p>
+                  <p className="mt-3 text-sm text-ink-700">
+                    Abrir credencial <span className="text-copper-500">→</span>
+                  </p>
+                </div>
+              </div>
             </a>
           ))}
         </div>
       </div>
     </section>
-    );
-
+  );
 }
+
 export default Certificate;

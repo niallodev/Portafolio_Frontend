@@ -1,21 +1,35 @@
-import { FaGithub, FaLinkedin } from 'react-icons/fa'; // Asegúrate de instalar react-icons
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
+import { profile } from '../data/site';
 
 function Footer() {
+  const year = new Date().getFullYear();
+
   return (
-    <footer className="bg-gray-800 text-white text-center py-6">
-      <div className="mb-4">
-        <p>&copy; 2024 Nicolás Alexander Loor Bazurto. Todos los derechos reservados.</p>
-      </div>
-      <div className="flex justify-center space-x-6 mb-4">
-        <a href="https://github.com/niallodev" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-500 transition-colors">
-          <FaGithub className="text-2xl" />
-        </a>
-        <a href="https://www.linkedin.com/in/nicol%C3%A1s-loor-bazurto-5172121a1" target="_blank" rel="noopener noreferrer" className="text-white hover:text-teal-500 transition-colors">
-          <FaLinkedin className="text-2xl" />
-        </a>
-      </div>
-      <div className="text-sm text-gray-400">
-        <p>Diseñado y desarrollado por Nicolás Alexander Loor Bazurto</p>
+    <footer className="relative border-t border-ink-900/10 bg-sand-50/60">
+      <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-4 py-8 md:flex-row md:px-6">
+        <p className="text-sm text-ink-700">
+          © {year} {profile.name}. Diseñado y desarrollado por mi.
+        </p>
+        <div className="flex items-center gap-3">
+          <a
+            href={profile.links.github}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink-900/12 bg-sand-50 text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+            aria-label="GitHub"
+          >
+            <FaGithub />
+          </a>
+          <a
+            href={profile.links.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink-900/12 bg-sand-50 text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+            aria-label="LinkedIn"
+          >
+            <FaLinkedinIn />
+          </a>
+        </div>
       </div>
     </footer>
   );

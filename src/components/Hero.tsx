@@ -1,93 +1,120 @@
+import { FaGithub, FaLinkedinIn } from 'react-icons/fa6';
+import { profile } from '../data/site';
+
 function Hero() {
+  const photoSrc = `${import.meta.env.BASE_URL}Perfil.png`;
+  const cvPdfHref = `${import.meta.env.BASE_URL}CV_Nicolas_Loor_Bazurto.pdf`;
+
   return (
-    <header className="bg-gradient-to-r from-blue-500 to-purple-500 text-white text-center py-20 relative overflow-hidden">
-      {/* Fondo animado */}
-      <div className="absolute inset-0">
-        <div className="bg-gradient-to-r from-blue-300 to-transparent w-72 h-72 rounded-full blur-3xl opacity-50 animate-float1 absolute top-10 left-10"></div>
-        <div className="bg-gradient-to-r from-purple-300 to-transparent w-96 h-96 rounded-full blur-3xl opacity-50 animate-float2 absolute bottom-10 right-10"></div>
-      </div>
-
-      {/* Contenido principal */}
-      <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-8">
-        {/* Imagen */}
-        <img
-          // src="https://unavatar.io/niallodev"
-          src="Perfil.png"
-          alt="Foto de Nicolás"
-          className="w-40 h-40 rounded-full shadow-lg border-4 border-white hover:scale-105 transition"
-        />
-
-        {/* Texto */}
+    <section className="relative pt-28 md:pt-32">
+      <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 pb-16 md:grid-cols-2 md:px-6">
         <div>
-          <h1 className="text-5xl font-bold opacity-0 animate-fadeIn">
-            ¡Hola! Soy Nicolás Alexander
+          <div className="inline-flex items-center gap-2 rounded-full border border-ink-900/10 bg-sand-50/80 px-3 py-1 text-xs font-semibold text-ink-700 shadow-soft">
+            <span className="inline-block h-2 w-2 rounded-full bg-tealish-500" aria-hidden="true" />
+            Disponible para nuevas oportunidades
+          </div>
+
+          <h1 className="mt-5 font-display text-4xl font-bold tracking-tight text-ink-950 sm:text-5xl">
+            {profile.name}
           </h1>
-          <p className="mt-4 text-xl opacity-0 animate-fadeIn delay-500">
-            Desarrollador de Software | Ingeniero en TI
+          <p className="mt-3 text-lg font-semibold text-ink-700">
+            {profile.role} <span className="text-copper-500">/</span> {profile.location}
           </p>
-          <a
-            href="#contact"
-            className="mt-6 inline-block bg-white text-blue-500 px-6 py-3 rounded-lg shadow-md hover:bg-blue-500 hover:text-white transition transform hover:scale-105 active:scale-95 opacity-0 animate-fadeIn delay-1000"
-          >
-            Contáctame
-          </a>
+
+          <p className="mt-6 max-w-prose text-base leading-relaxed text-ink-700 sm:text-lg">
+            {profile.tagline}
+          </p>
+
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
+            <a
+              href="#projects"
+              className="inline-flex items-center justify-center rounded-xl bg-ink-900 px-5 py-3 text-sm font-semibold text-sand-50 shadow-soft transition hover:bg-ink-950"
+            >
+              Ver proyectos
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center justify-center rounded-xl border border-ink-900/15 bg-sand-50/70 px-5 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+            >
+              Contactarme
+            </a>
+            <a
+              href={cvPdfHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center rounded-xl border border-ink-900/15 bg-sand-50/70 px-5 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+            >
+              Descargar CV
+            </a>
+
+            <div className="flex items-center gap-2 sm:ml-auto">
+              <a
+                href={profile.links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink-900/12 bg-sand-50/70 text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+                aria-label="GitHub"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href={profile.links.linkedin}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-ink-900/12 bg-sand-50/70 text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+                aria-label="LinkedIn"
+              >
+                <FaLinkedinIn />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="relative">
+          <div className="absolute -inset-6 -z-10 rounded-[2rem] bg-gradient-to-tr from-copper-500/15 via-transparent to-tealish-500/20 blur-2xl" />
+          <div className="floaty rounded-[2rem] border border-ink-900/10 bg-sand-50/70 p-4 shadow-soft">
+            <div className="flex items-center gap-4 rounded-2xl bg-sand-100 p-4">
+              <img
+                src={photoSrc}
+                alt="Foto de Nicolas"
+                className="h-20 w-20 rounded-2xl object-cover shadow-soft"
+                loading="eager"
+              />
+              <div>
+                <p className="font-display text-lg font-semibold text-ink-950">{profile.name}</p>
+                <p className="mt-1 text-sm text-ink-700">React • Node.js • Python • .NET</p>
+                <p className="mt-1 text-xs text-ink-600">Guayaquil, Ecuador</p>
+              </div>
+            </div>
+
+            <div className="mt-4 grid gap-3 sm:grid-cols-2">
+              <a
+                href={`mailto:${profile.email}`}
+                className="rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+              >
+                {profile.email}
+              </a>
+              <a
+                href={`https://wa.me/${profile.phone.replace(/\D/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+              >
+                WhatsApp: {profile.phone}
+              </a>
+            </div>
+
+            <div className="mt-4 rounded-2xl border border-ink-900/10 bg-ink-950/95 px-4 py-3 text-sand-50 shadow-soft">
+              <p className="text-xs uppercase tracking-widest text-sand-50/70">Enfoque</p>
+              <p className="mt-1 text-sm">
+                UI rapida y limpia • APIs REST • Seguridad basica (JWT, validaciones) • SQL
+              </p>
+            </div>
+          </div>
         </div>
       </div>
-
-      {/* Animaciones personalizadas */}
-      <style>{`
-        @keyframes float1 {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(-20px);
-          }
-        }
-
-        @keyframes float2 {
-          0%, 100% {
-            transform: translateY(0);
-          }
-          50% {
-            transform: translateY(20px);
-          }
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        .animate-float1 {
-          animation: float1 6s ease-in-out infinite;
-        }
-
-        .animate-float2 {
-          animation: float2 6s ease-in-out infinite;
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 1s ease-in-out forwards;
-        }
-
-        .delay-500 {
-          animation-delay: 0.5s;
-        }
-
-        .delay-1000 {
-          animation-delay: 1s;
-        }
-      `}</style>
-    </header>
+    </section>
   );
 }
 
 export default Hero;
-//! 173

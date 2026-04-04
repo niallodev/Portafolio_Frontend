@@ -1,158 +1,101 @@
-import { FaGithub, FaEye, FaReact, FaCss3, FaHtml5, FaBrain, FaRobot 
-  , FaBootstrap, FaGit, FaNodeJs 
-} from 'react-icons/fa'; // Para agregar iconos de GitHub y vista previa
-import { 
-  SiTypescript, SiPostgresql, SiExpress, SiSocketdotio, SiTailwindcss, SiCloudinary 
-} from 'react-icons/si';
-import Slider from 'react-slick'; // Carrusel
-import "slick-carousel/slick/slick.css"; // Importa estilos básicos
-import "slick-carousel/slick/slick-theme.css"; // Importa estilos del tema
-
+import { FaArrowUpRightFromSquare, FaGithub } from 'react-icons/fa6';
+import { projects } from '../data/site';
 
 function Projects() {
-  const projects = [
-    {
-      title: 'Commic - El Pacto de los Espectros',
-      // description: 'Descripción breve del proyecto 1. Aquí puedes hablar de las tecnologías usadas y la solución que ofreciste.',
-      description: 'Es un cómic interactivo desarrollado para mostrar habilidades técnicas y como regalo personal. Utiliza tecnologías web como HTML, CSS y React para crear una experiencia visual dinámica. Las ilustraciones fueron generadas con la ayuda de Leonardo.ai, incorporando un estilo único y detallado. Además, se implementaron herramientas de colaboración como Git y GitHub para el control de versiones y el trabajo en equipo. Este proyecto tiene como objetivo combinar narrativa visual con tecnologías modernas.',
-      demoLink: 'https://niallodev.github.io/Commic-El-Pacto-de-los-Espectros/',  // Enlace de la demo
-      githubLink: 'https://github.com/niallodev/Commic-El-Pacto-de-los-Espectros', // Enlace de GitHub
-      technologies: [<FaReact />, <FaCss3 />, <FaHtml5 />,  <FaGithub />, <FaRobot />, <FaBrain /> ], // Íconos de tecnologías,
-      image: 'https://niallodev.github.io/Commic-El-Pacto-de-los-Espectros/img/pagina_1_cuadro_1.jpg'
-    },
-    {
-      title: 'Gomoriecut Restaurant',
-      description: 'Aplicación web desarrollada para optimizar la gestión operativa de un restaurante. Incluye funcionalidades específicas para cada uno de los Rol (administrador, trabajador (cada trabajador va a tener un cargo especifico), cliente). Permitiedo gestionar las funcionalidades para cada Rol. Desarrollado con React y TypeScript en el frontend, empleando buenas prácticas de diseño de componentes, control de estado y comunicación entre vistas. Ideal para mejorar la eficiencia y trazabilidad del servicio en restaurantes.',
-      demoLink: 'https://charming-lebkuchen-ef9bfc.netlify.app/auth',  // Enlace de la demo
-      // githubLink: 'https://github.com/niallodev/Commic-El-Pacto-de-los-Espectros', // Enlace de GitHub
-      technologies: [<FaHtml5 />, 
-    <FaCss3 />, 
-    <SiTailwindcss />, 
-    <FaBootstrap />, 
-    <FaReact />, 
-    <SiTypescript />, 
-    <SiPostgresql />, 
-    <FaNodeJs />, 
-    <SiExpress />, 
-    <SiSocketdotio />, 
-    <SiCloudinary />, 
-    <FaGit />, 
-    <FaGithub /> ], // Íconos de tecnologías,
-      image: 'https://charming-lebkuchen-ef9bfc.netlify.app/config/hero.jpg'
-    },
-   
-  ];
-
-  const sliderSettings = {
-    dots: true,
-    infinite: true, // Para evitar el rebote al llegar al final del carrusel
-    speed: 700, // Aumenta el tiempo para una transición más lenta
-    slidesToShow: 3, // Cambia todos los slides visibles a la vez
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    cssEase: 'ease-in-out', // Transición más fluida
-    pauseOnHover: true, // Pausar el autoplay cuando el usuario pasa el cursor sobre el carrusel
-    centerMode: true, // Centrar los elementos visibles
-    centerPadding: '0px', // Espaciado entre elementos
-    arrows: false, // Habilitar flechas
-    fade: false,  // Efecto de desvanecimiento en vez de desplazamiento
-    swipeToSlide: true, // Permite deslizar para cambiar
-    touchThreshold: 15, // Sensibilidad al toque
-    // variableWidth: true, // Para slides de ancho variable
-    adaptiveHeight: true, // Ajusta el alto automáticamente según el contenido
-
-    appendDots: (dots:any) => (
-      <div style={{ marginBottom: '-10px' }}>
-        <ul>
-          {dots}
-        </ul>
-      </div>
-    ),
-    
-
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-          arrows:false // Desactiva flechas en pantallas pequeñas
-        },
-      },
-    ],
-  };
-
-
-  
-  
   return (
-    <section id="projects" className="py-20 px-5 bg-gray-100 text-center">
-      <h2 className="text-4xl font-extrabold mb-12 text-teal-600">Mis Proyectos</h2>
-      <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto">
-      {projects.map((project, index) => (
-        <div key={index} className="flip-card">
-        <div className="flip-card-inner">
-          {/* <!-- Parte frontal --> */}
-          <div className="flip-card-front">
-            <h3 className="text-2xl font-semibold absolute top-3 text-white">{project.title}</h3>
-            <img src={project.image} alt="Imagen Frontal"/>
+    <section id="projects" className="relative py-16">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-end">
+          <div>
+            <p className="font-serif text-sm font-semibold uppercase tracking-[0.18em] text-copper-600">
+              Proyectos
+            </p>
+            <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
+              Seleccion de trabajos recientes.
+            </h2>
           </div>
-          {/* <!-- Parte trasera --> */}
-          <div className="flip-card-back  text-teal-600 block justify-center items-center text-center">
-          
-          <h3 className="text-2xl font-semibold mb-4">{project.title}</h3>
-              <p className="text-gray-600 mb-4">{project.description}</p>
-              <div className="px-4 items-center">
-                <Slider {...sliderSettings}>
-                  {project.technologies.map((tech, i) => (
-                    <div key={i} className="text-4xl text-teal-600 flex justify-center items-center text-center">
-                  
-                      <tech.type {...tech.props} className="m-auto" />
-                      
-                    </div>
-                  ))}
-                </Slider>
-              </div>
-              <br />
-              <br />
-              <div className="flex justify-between">
-                <a
-                  href={project.demoLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-teal-600 hover:text-teal-800 flex items-center z-10"
-                >
-                  <FaEye className="mr-2" /> Ver Demo
-                </a>
-                {project.githubLink && (
-                  <a
-                    href={project.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-teal-600 hover:text-teal-800 flex items-center z-10"
-                  >
-                    <FaGithub className="mr-2" /> GitHub
-                  </a>
-                )}
-                
-              </div>
-          </div>
+          <p className="max-w-xl text-sm text-ink-700">
+            Prefiero mostrar cosas publicas y navegables: demos, repos y descripciones claras.
+          </p>
         </div>
-      </div>
 
-      ))}
+        <div className="mt-10 grid gap-6 md:grid-cols-12">
+          {projects.map((p, idx) => {
+            const isFeatured = idx === 0;
+            return (
+              <article
+                key={p.title}
+                className={[
+                  'group overflow-hidden rounded-[2rem] border border-ink-900/10 bg-sand-50/70 shadow-soft transition',
+                  'hover:-translate-y-1 hover:shadow-lift',
+                  isFeatured ? 'md:col-span-7' : 'md:col-span-5',
+                ].join(' ')}
+              >
+                <div className="relative">
+                  <img
+                    src={p.image}
+                    alt={p.title}
+                    className="h-56 w-full object-cover transition duration-500 group-hover:scale-[1.02] sm:h-64"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-ink-950/55 via-transparent to-transparent" />
+                  <div className="absolute bottom-4 left-4 right-4 flex flex-wrap gap-2">
+                    {p.tags.slice(0, isFeatured ? 6 : 4).map((t) => (
+                      <span
+                        key={t}
+                        className="rounded-full border border-sand-50/20 bg-ink-950/70 px-3 py-1 text-xs font-semibold text-sand-50 backdrop-blur"
+                      >
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-6">
+                  <h3 className="font-display text-2xl font-semibold tracking-tight text-ink-950">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-ink-700">{p.blurb}</p>
+
+                  <ul className="mt-4 space-y-2 text-sm text-ink-700">
+                    {p.highlights.map((h) => (
+                      <li key={h} className="flex gap-3">
+                        <span className="mt-1 h-2 w-2 flex-none rounded-full bg-copper-500" aria-hidden="true" />
+                        <span>{h}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {p.links.map((l) => {
+                      const isGitHub = l.label.toLowerCase().includes('github');
+                      return (
+                        <a
+                          key={l.href}
+                          href={l.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={[
+                            'inline-flex items-center gap-2 rounded-xl px-4 py-2 text-sm font-semibold shadow-soft transition',
+                            isGitHub
+                              ? 'border border-ink-900/12 bg-sand-50 text-ink-900 hover:bg-sand-200/70'
+                              : 'bg-tealish-500 text-sand-50 hover:bg-tealish-600',
+                          ].join(' ')}
+                        >
+                          {l.label}
+                          {isGitHub ? <FaGithub aria-hidden="true" /> : <FaArrowUpRightFromSquare aria-hidden="true" />}
+                        </a>
+                      );
+                    })}
+                  </div>
+                </div>
+              </article>
+            );
+          })}
+        </div>
       </div>
     </section>
   );
 }
 
 export default Projects;
-//! 173

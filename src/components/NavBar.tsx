@@ -1,124 +1,143 @@
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
+import { profile } from '../data/site';
+
+type Section = { id: string; label: string };
 
 function NavBar() {
-  // Estado para manejar la visibilidad del menú en dispositivos móviles
+  const sections: Section[] = useMemo(
+    () => [
+      { id: 'about', label: 'Sobre mi' },
+      { id: 'skills', label: 'Stack' },
+      { id: 'projects', label: 'Proyectos' },
+      { id: 'certificates', label: 'Certificaciones' },
+      { id: 'contact', label: 'Contacto' },
+    ],
+    [],
+  );
+
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  // Función para alternar el menú hamburguesa
-  const toggleMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-  };
+  const [active, setActive] = useState<string>('');
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 12);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    const els = sections
+      .map((s) => document.getElementById(s.id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (els.length === 0) return;
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0));
+        if (visible[0]?.target?.id) setActive(visible[0].target.id);
+      },
+      {
+        root: null,
+        threshold: [0.1, 0.2, 0.35],
+        rootMargin: '-40% 0px -55% 0px',
+      },
+    );
+
+    els.forEach((el) => obs.observe(el));
+    return () => obs.disconnect();
+  }, [sections]);
+
+  const linkClass = (id: string) =>
+    [
+      'px-3 py-2 rounded-full text-sm font-medium transition',
+      active === id
+        ? 'bg-ink-900 text-sand-50 shadow-soft'
+        : 'text-ink-700 hover:bg-sand-200/70 hover:text-ink-900',
+    ].join(' ');
 
   return (
-    <nav className="bg-blue-600 text-white p-4 fixed w-full top-0 z-50 shadow-md transition-all duration-300 ease-in-out">
-      <div className="flex justify-between items-center w-full px-6">
-        <h1 className="text-2xl font-bold hover:scale-110 transition-transform duration-300 cursor-pointer">
-          Nicolás Loor
-        </h1>
-        {/* Menú en pantallas grandes */}
-        <ul className="hidden md:flex space-x-8">
-          <li>
-            <a
-              href="#about"
-              className="hover:text-gray-200 hover:underline transition-all duration-300"
-            >
-              Sobre Mí
-            </a>
-          </li>
-          <li>
-            <a
-              href="#skills"
-              className="hover:text-gray-200 hover:underline transition-all duration-300"
-            >
-              Habilidades
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              className="hover:text-gray-200 hover:underline transition-all duration-300"
-            >
-              Proyectos
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="hover:text-gray-200 hover:underline transition-all duration-300"
-            >
-              Contacto
-            </a>
-          </li>
-        </ul>
+    <header
+      className={[
+        'fixed inset-x-0 top-0 z-50',
+        'border-b border-ink-900/10',
+        'backdrop-blur-md',
+        scrolled ? 'bg-sand-50/85 shadow-soft' : 'bg-sand-50/60',
+      ].join(' ')}
+    >
+      <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6">
+        <a href="#" className="group inline-flex items-baseline gap-2">
+          <span className="font-display text-lg font-semibold tracking-tight text-ink-950">
+            {profile.name.split(' ')[0]}
+            <span className="text-copper-500">.</span>
+          </span>
+          <span className="hidden text-xs text-ink-600 md:inline">
+            {profile.role}
+          </span>
+        </a>
 
-        {/* Botón de menú hamburguesa para pantallas pequeñas */}
-        <div className="md:hidden flex items-center">
-          <button onClick={toggleMenu} className="text-white">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Navegacion">
+          {sections.map((s) => (
+            <a key={s.id} href={`#${s.id}`} className={linkClass(s.id)}>
+              {s.label}
+            </a>
+          ))}
+          <a
+            href="#contact"
+            className="ml-2 inline-flex items-center rounded-full bg-tealish-500 px-4 py-2 text-sm font-semibold text-sand-50 shadow-soft transition hover:bg-tealish-600"
+          >
+            Hablemos
+          </a>
+        </nav>
+
+        <button
+          type="button"
+          className="inline-flex items-center justify-center rounded-full border border-ink-900/10 bg-sand-50/80 px-3 py-2 text-ink-900 shadow-soft transition hover:bg-sand-200/60 md:hidden"
+          aria-label="Abrir menu"
+          aria-expanded={isMobileMenuOpen}
+          onClick={() => setIsMobileMenuOpen((v) => !v)}
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path
+              d="M4 7h16M4 12h16M4 17h16"
               stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div>
+              strokeWidth="2"
+              strokeLinecap="round"
+            />
+          </svg>
+        </button>
       </div>
 
-      {/* Menú desplegable en pantallas pequeñas */}
-      <div
-        className={`${
-          isMobileMenuOpen ? 'block' : 'hidden'
-        } md:hidden absolute top-16 left-0 w-full bg-blue-600 text-white p-4 space-y-6 flex flex-col items-center`}
-      >
-        <ul className="space-y-4">
-          <li>
+      {isMobileMenuOpen ? (
+        <div className="border-t border-ink-900/10 bg-sand-50/95 px-4 pb-4 pt-3 md:hidden">
+          <nav className="mx-auto grid max-w-6xl gap-2" aria-label="Navegacion movil">
+            {sections.map((s) => (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                onClick={() => setIsMobileMenuOpen(false)}
+                className={[
+                  'rounded-xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft',
+                  active === s.id ? 'ring-2 ring-tealish-500/30' : 'hover:bg-sand-200/60',
+                ].join(' ')}
+              >
+                {s.label}
+              </a>
+            ))}
             <a
-              href="#about"
-              className="block text-lg hover:text-gray-200 hover:underline transition-all duration-300 transform hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)} // Cierra el menú al hacer clic
+              href={`mailto:${profile.email}`}
+              className="mt-2 inline-flex items-center justify-center rounded-xl bg-ink-900 px-4 py-3 text-sm font-semibold text-sand-50 shadow-soft"
             >
-              Sobre Mí
+              Escribeme
             </a>
-          </li>
-          <li>
-            <a
-              href="#skills"
-              className="block text-lg hover:text-gray-200 hover:underline transition-all duration-300 transform hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)} // Cierra el menú al hacer clic
-            >
-              Habilidades
-            </a>
-          </li>
-          <li>
-            <a
-              href="#projects"
-              className="block text-lg hover:text-gray-200 hover:underline transition-all duration-300 transform hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)} // Cierra el menú al hacer clic
-            >
-              Proyectos
-            </a>
-          </li>
-          <li>
-            <a
-              href="#contact"
-              className="block text-lg hover:text-gray-200 hover:underline transition-all duration-300 transform hover:scale-105"
-              onClick={() => setIsMobileMenuOpen(false)} // Cierra el menú al hacer clic
-            >
-              Contacto
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+          </nav>
+        </div>
+      ) : null}
+    </header>
   );
 }
 
 export default NavBar;
-//!146

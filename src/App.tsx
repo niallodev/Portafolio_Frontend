@@ -7,23 +7,21 @@ import Projects from './components/Projects.tsx';
 import Contact from './components/Contact.tsx';
 import Footer from './components/Footer.tsx';
 
-
-
 function App() {
-  
-
   return (
-    <div>
+    <div className="page-surface min-h-screen">
       <NavBar />
-      <Hero />
-      <About />
-      <Skills />
-      <Certificate/>
-      <Projects />
-      <Contact />
+      <main className="relative z-10">
+        <Hero />
+        <About />
+        <Skills />
+        <Projects />
+        <Certificate />
+        <Contact />
+      </main>
       <Footer />
     </div>
   );
 }
 
-export default App
+export default App;
