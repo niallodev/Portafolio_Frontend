@@ -14,7 +14,7 @@ export type Project = {
 
 export const profile = {
   name: 'Nicolás Loor Bazurto',
-  role: 'Ingeniero de Software (Junior)',
+  role: 'Ingeniero de Software',
   tagline:
     'Construyo interfaces rápidas y claras, APIs bien estructuradas y productos web listos para crecer.',
   location: 'Guayaquil, Ecuador',
