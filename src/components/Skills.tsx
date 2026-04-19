@@ -10,7 +10,7 @@ function Skills() {
               Stack
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
-              Tecnologias que uso en proyectos reales.
+              Tecnologías que uso en proyectos reales.
             </h2>
           </div>
           <div className="rounded-2xl border border-ink-900/10 bg-sand-50/70 px-5 py-4 text-sm text-ink-700 shadow-soft">

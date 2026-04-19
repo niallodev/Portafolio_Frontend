@@ -13,9 +13,10 @@ export type Project = {
 };
 
 export const profile = {
-  name: 'Nicolas Loor Bazurto',
-  role: 'Desarrollador de Software',
-  tagline: 'Construyo interfaces limpias, APIs seguras y productos web listos para escalar.',
+  name: 'Nicolás Loor Bazurto',
+  role: 'Ingeniero de Software (Junior)',
+  tagline:
+    'Construyo interfaces rápidas y claras, APIs bien estructuradas y productos web listos para crecer.',
   location: 'Guayaquil, Ecuador',
   email: 'nicolasalexander.loor@hotmail.com',
   phone: '+593 980449512',
@@ -30,24 +31,43 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    'Ingeniero de Software junior con enfoque en desarrollo web. Me gusta convertir ideas en interfaces rapidas y claras, y conectar todo con APIs bien estructuradas.',
-    'Trabajo con React/TypeScript, Node.js, Python (Django) y C# (.NET). Tambien tengo base en bases de datos (SQL Server, PostgreSQL) y herramientas de BI (Power BI, ETL).',
+    'Ingeniero de Software junior con enfoque en desarrollo web. Me gusta convertir ideas en interfaces rápidas y claras, y conectar todo con APIs bien estructuradas.',
+    'Trabajo con React/TypeScript, Node.js, Python (Django) y C# (.NET). También tengo base en bases de datos (SQL Server, PostgreSQL) y herramientas de BI (Power BI, ETL).',
   ],
   strengths: [
-    'Resolucion de problemas con enfoque practico',
-    'Aprendizaje rapido y mejora continua',
-    'Trabajo en equipo y comunicacion clara',
+    'Resolución de problemas con enfoque práctico',
+    'Aprendizaje rápido y mejora continua',
+    'Trabajo en equipo y comunicación clara',
   ],
 };
 
 export const skills = [
   {
     title: 'Frontend',
-    items: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'Tailwind CSS', 'Bootstrap'],
+    items: [
+      'React',
+      'React Native',
+      'TypeScript',
+      'JavaScript',
+      'HTML5',
+      'CSS3',
+      'Tailwind CSS',
+      'Bootstrap',
+    ],
   },
   {
     title: 'Backend',
-    items: ['Node.js', 'Django', 'ASP.NET Core MVC', 'APIs REST', 'JWT', 'Validacion de entradas'],
+    items: [
+      'C#',
+      '.NET Framework',
+      'ASP.NET Core MVC',
+      'Node.js',
+      'Django',
+      'APIs REST',
+      'JWT',
+      'Validacion de entradas',
+      'Azure (Autenticación)',
+    ],
   },
   {
     title: 'Datos',
@@ -61,14 +81,27 @@ export const skills = [
 
 export const experience = [
   {
+    company: 'Apptelink',
+    role: 'Ingeniero de Desarrollo',
+    dates: 'Sep 2025 - Actualidad',
+    bullets: [
+      'Soporte y mantenimiento de aplicaciones en producción, atendiendo incidencias y mejoras evolutivas.',
+      'Desarrollo de funcionalidades para web con C# y .NET Framework, conectando con SQL Server.',
+      'Desarrollo móvil con React Native para nuevas funcionalidades y ajustes de experiencia.',
+      'Integración de autenticación con Azure para el inicio de sesión (login) del sistema.',
+      'Apoyo en QA: validación de cambios, pruebas funcionales y verificación antes de publicar.',
+      'Publicaciones y tareas relacionadas con servidores para asegurar despliegues estables.',
+    ],
+  },
+  {
     company: 'ARCSA',
     role: 'Asistente del Departamento de TIC',
     dates: 'Feb 2023 - Ago 2023',
     bullets: [
-      'Implemente practicas de seguridad basicas (respaldos y antivirus) para proteger informacion institucional.',
-      'Administre y mantuve actualizada la base de datos de inventario de equipos tecnologicos.',
-      'Instale sistemas operativos y configure redes en entornos con dominio.',
-      'Realice mantenimiento preventivo y correctivo de hardware y software para reducir incidencias.',
+      'Implementé prácticas de seguridad básicas (respaldos y antivirus) para proteger información institucional.',
+      'Administré y mantuve actualizada la base de datos de inventario de equipos tecnológicos.',
+      'Instalé sistemas operativos y configuré redes en entornos con dominio.',
+      'Realicé mantenimiento preventivo y correctivo de hardware y software para reducir incidencias.',
     ],
   },
 ];
@@ -77,7 +110,7 @@ export const projects: Project[] = [
   {
     title: 'Gomoriecut Restaurant',
     blurb:
-      'Aplicacion web para mejorar la gestion operativa de un restaurante con funcionalidades por rol y un flujo de trabajo claro.',
+      'Aplicación web para mejorar la gestión operativa de un restaurante con funcionalidades por rol y un flujo de trabajo claro.',
     highlights: [
       'Enfoque por roles: administrador, trabajador y cliente',
       'UI modular con componentes reutilizables',
@@ -101,9 +134,9 @@ export const projects: Project[] = [
   {
     title: 'Commic - El Pacto de los Espectros',
     blurb:
-      'Comic interactivo desplegado en GitHub Pages. Proyecto creativo para mostrar habilidades web y experiencia visual.',
+      'Cómic interactivo desplegado en GitHub Pages. Proyecto creativo para mostrar habilidades web y experiencia visual.',
     highlights: [
-      'Navegacion por escenas y enfoque en storytelling',
+      'Navegación por escenas y enfoque en storytelling',
       'Despliegue en GitHub Pages',
       'Control de versiones con Git/GitHub',
     ],

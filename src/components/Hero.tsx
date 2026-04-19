@@ -82,7 +82,7 @@ function Hero() {
               />
               <div>
                 <p className="font-display text-lg font-semibold text-ink-950">{profile.name}</p>
-                <p className="mt-1 text-sm text-ink-700">React • Node.js • Python • .NET</p>
+                <p className="mt-1 text-sm text-ink-700">React • TypeScript • Node.js • Python • .NET</p>
                 <p className="mt-1 text-xs text-ink-600">Guayaquil, Ecuador</p>
               </div>
             </div>
@@ -90,24 +90,30 @@ function Hero() {
             <div className="mt-4 grid gap-3 sm:grid-cols-2">
               <a
                 href={`mailto:${profile.email}`}
-                className="rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+                className="min-w-0 rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 shadow-soft transition hover:bg-sand-200/70"
               >
-                {profile.email}
+                <span className="text-xs font-semibold uppercase tracking-widest text-ink-600">Email</span>
+                <span className="mt-1 block break-all text-sm font-semibold text-ink-900">
+                  {profile.email}
+                </span>
               </a>
               <a
                 href={`https://wa.me/${profile.phone.replace(/\D/g, '')}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 text-sm font-semibold text-ink-900 shadow-soft transition hover:bg-sand-200/70"
+                className="min-w-0 rounded-2xl border border-ink-900/10 bg-sand-50 px-4 py-3 shadow-soft transition hover:bg-sand-200/70"
               >
-                WhatsApp: {profile.phone}
+                <span className="text-xs font-semibold uppercase tracking-widest text-ink-600">WhatsApp</span>
+                <span className="mt-1 block break-words text-sm font-semibold text-ink-900">
+                  {profile.phone}
+                </span>
               </a>
             </div>
 
             <div className="mt-4 rounded-2xl border border-ink-900/10 bg-ink-950/95 px-4 py-3 text-sand-50 shadow-soft">
               <p className="text-xs uppercase tracking-widest text-sand-50/70">Enfoque</p>
               <p className="mt-1 text-sm">
-                UI rapida y limpia • APIs REST • Seguridad basica (JWT, validaciones) • SQL
+                UI rápida y limpia • APIs REST • Seguridad básica (JWT, validaciones) • SQL
               </p>
             </div>
           </div>

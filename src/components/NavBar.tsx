@@ -6,7 +6,7 @@ type Section = { id: string; label: string };
 function NavBar() {
   const sections: Section[] = useMemo(
     () => [
-      { id: 'about', label: 'Sobre mi' },
+      { id: 'about', label: 'Sobre mí' },
       { id: 'skills', label: 'Stack' },
       { id: 'projects', label: 'Proyectos' },
       { id: 'certificates', label: 'Certificaciones' },
@@ -79,7 +79,7 @@ function NavBar() {
           </span>
         </a>
 
-        <nav className="hidden items-center gap-1 md:flex" aria-label="Navegacion">
+        <nav className="hidden items-center gap-1 md:flex" aria-label="Navegación">
           {sections.map((s) => (
             <a key={s.id} href={`#${s.id}`} className={linkClass(s.id)}>
               {s.label}
@@ -96,7 +96,7 @@ function NavBar() {
         <button
           type="button"
           className="inline-flex items-center justify-center rounded-full border border-ink-900/10 bg-sand-50/80 px-3 py-2 text-ink-900 shadow-soft transition hover:bg-sand-200/60 md:hidden"
-          aria-label="Abrir menu"
+          aria-label="Abrir menú"
           aria-expanded={isMobileMenuOpen}
           onClick={() => setIsMobileMenuOpen((v) => !v)}
         >
@@ -113,7 +113,7 @@ function NavBar() {
 
       {isMobileMenuOpen ? (
         <div className="border-t border-ink-900/10 bg-sand-50/95 px-4 pb-4 pt-3 md:hidden">
-          <nav className="mx-auto grid max-w-6xl gap-2" aria-label="Navegacion movil">
+          <nav className="mx-auto grid max-w-6xl gap-2" aria-label="Navegación móvil">
             {sections.map((s) => (
               <a
                 key={s.id}
@@ -131,7 +131,7 @@ function NavBar() {
               href={`mailto:${profile.email}`}
               className="mt-2 inline-flex items-center justify-center rounded-xl bg-ink-900 px-4 py-3 text-sm font-semibold text-sand-50 shadow-soft"
             >
-              Escribeme
+              Escríbeme
             </a>
           </nav>
         </div>

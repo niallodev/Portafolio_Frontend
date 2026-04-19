@@ -11,11 +11,11 @@ function Projects() {
               Proyectos
             </p>
             <h2 className="mt-3 font-display text-3xl font-bold tracking-tight text-ink-950 sm:text-4xl">
-              Seleccion de trabajos recientes.
+              Selección de trabajos recientes.
             </h2>
           </div>
           <p className="max-w-xl text-sm text-ink-700">
-            Prefiero mostrar cosas publicas y navegables: demos, repos y descripciones claras.
+            Prefiero mostrar cosas públicas y navegables: demos, repos y descripciones claras.
           </p>
         </div>
 

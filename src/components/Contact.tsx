@@ -81,7 +81,7 @@ function Contact() {
       });
 
       if (response.ok) {
-        setStatus({ type: 'success', text: 'Mensaje enviado. Te respondere lo antes posible.' });
+        setStatus({ type: 'success', text: 'Mensaje enviado. Te responderé lo antes posible.' });
         setName("");
         setEmail("");
         setMessage("");
@@ -89,8 +89,8 @@ function Contact() {
       } else {
         setStatus({ type: 'error', text: 'No pude enviar el mensaje. Intenta de nuevo en unos minutos.' });
       }
-    } catch (error) {
-      setStatus({ type: 'error', text: 'Error de conexion. Intenta mas tarde.' });
+      } catch (error) {
+      setStatus({ type: 'error', text: 'Error de conexión. Intenta más tarde.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -109,7 +109,7 @@ function Contact() {
                 Hablemos de tu vacante.
               </h2>
               <p className="mt-4 text-sm leading-relaxed text-ink-700">
-                Si te interesa mi perfil, escribeme por correo o LinkedIn. Tambien puedes usar el formulario.
+                Si te interesa mi perfil, escríbeme por correo o LinkedIn. También puedes usar el formulario.
               </p>
 
               <div className="mt-6 grid gap-3">
