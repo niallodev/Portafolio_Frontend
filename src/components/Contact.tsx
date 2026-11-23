@@ -70,27 +70,35 @@ function Contact() {
       return;
     }
     setIsSubmitting(true);
-    // Envío del correo con EmailJS
+    // Envío con Web3Forms
     try {
-      const response = await fetch("https://portafolio-backend-2nlw.onrender.com/send-email", {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({ name, email, message }),
+        body: JSON.stringify({
+          access_key: "2564d5f7-2eac-4d09-80c0-964c666269f2",
+          subject: `Nuevo mensaje del portafolio de ${name}`,
+          name,
+          email,
+          message,
+        }),
       });
+      const result = await response.json().catch(() => null);
 
-      if (response.ok) {
-        setStatus({ type: 'success', text: 'Mensaje enviado. Te responderé lo antes posible.' });
+      if (response.ok && result?.success) {
+        setStatus({ type: 'success', text: '¡Mensaje enviado! Te responderé pronto.' });
         setName("");
         setEmail("");
         setMessage("");
         setErrors({});
       } else {
-        setStatus({ type: 'error', text: 'No pude enviar el mensaje. Intenta de nuevo en unos minutos.' });
+        setStatus({ type: 'error', text: 'No pude enviar el mensaje.' });
       }
-      } catch (error) {
-      setStatus({ type: 'error', text: 'Error de conexión. Intenta más tarde.' });
+    } catch {
+      setStatus({ type: 'error', text: 'Error de conexión.' });
     } finally {
       setIsSubmitting(false);
     }
@@ -149,6 +157,15 @@ function Contact() {
                   ].join(' ')}
                 >
                   {status.text}
+                  {status.type === 'error' ? (
+                    <>
+                      {' '}Escríbeme directamente a{' '}
+                      <a href={`mailto:${profile.email}`} className="underline">
+                        {profile.email}
+                      </a>
+                      .
+                    </>
+                  ) : null}
                 </div>
               ) : null}
             </div>

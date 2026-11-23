@@ -45,10 +45,8 @@ function Skills() {
               </div>
 
               <div className="mt-6 rounded-2xl bg-ink-950/95 px-4 py-3 text-sand-50 shadow-soft">
-                <p className="text-xs uppercase tracking-widest text-sand-50/70">Como lo aplico</p>
-                <p className="mt-2 text-sm">
-                  Priorizo componentes reutilizables, validaciones en backend y consultas SQL claras.
-                </p>
+                <p className="text-xs uppercase tracking-widest text-sand-50/70">Cómo lo aplico</p>
+                <p className="mt-2 text-sm">{group.description}</p>
               </div>
             </div>
           ))}

@@ -14,9 +14,9 @@ export type Project = {
 
 export const profile = {
   name: 'Nicolás Loor Bazurto',
-  role: 'Ingeniero de Software',
+  role: 'Ingeniero de Software Fullstack',
   tagline:
-    'Construyo interfaces rápidas y claras, APIs bien estructuradas y productos web listos para crecer.',
+    'Desarrollo aplicaciones web y móviles de punta a punta con C# (.NET Core), React y TypeScript, y las despliego en producción sobre AWS.',
   location: 'Guayaquil, Ecuador',
   email: 'nicolasalexander.loor@hotmail.com',
   phone: '+593 980449512',
@@ -31,8 +31,8 @@ export const profile = {
 
 export const about = {
   paragraphs: [
-    'Ingeniero de Software junior con enfoque en desarrollo web. Me gusta convertir ideas en interfaces rápidas y claras, y conectar todo con APIs bien estructuradas.',
-    'Trabajo con React/TypeScript, Node.js, Python (Django) y C# (.NET). También tengo base en bases de datos (SQL Server, PostgreSQL) y herramientas de BI (Power BI, ETL).',
+    'Ingeniero de Software Fullstack con experiencia en desarrollo web y móvil (Android/iOS) para plataformas empresariales y SaaS. Construyo APIs REST con C# (.NET Core) y frontends con React y TypeScript.',
+    'Me encargo del ciclo completo: desarrollo, pases a QA y Producción, publicación en App Store y Google Play, y operación en la nube con AWS (EC2). También trabajo con SQL Server, PostgreSQL y Power BI.',
   ],
   strengths: [
     'Resolución de problemas con enfoque práctico',
@@ -44,6 +44,8 @@ export const about = {
 export const skills = [
   {
     title: 'Frontend',
+    description:
+      'Construcción de interfaces responsivas, componentes reutilizables y experiencia de usuario fluida.',
     items: [
       'React',
       'React Native',
@@ -57,6 +59,8 @@ export const skills = [
   },
   {
     title: 'Backend',
+    description:
+      'Diseño de APIs REST escalables, autenticación segura con JWT y lógica de negocio limpia.',
     items: [
       'C#',
       '.NET Framework',
@@ -71,19 +75,43 @@ export const skills = [
   },
   {
     title: 'Datos',
+    description:
+      'Modelado relacional, optimización de consultas SQL y procesos ETL para análisis.',
     items: ['SQL Server', 'PostgreSQL', 'MySQL', 'Power BI', 'ETL'],
   },
   {
     title: 'Herramientas',
-    items: ['Git', 'GitHub', 'Postman', 'Insomnia', 'VS Code', 'Scrum', 'Monday.com'],
+    description:
+      'Control de versiones con Git, pruebas de endpoints y despliegue continuo en la nube y tiendas.',
+    items: [
+      'Git',
+      'GitHub',
+      'AWS (EC2)',
+      'Postman',
+      'Insomnia',
+      'VS Code',
+      'Scrum',
+      'Monday.com',
+    ],
   },
 ];
 
 export const experience = [
   {
+    company: 'iCargy',
+    role: 'Desarrollador Semi Senior',
+    dates: 'Jul 2026 - Actualidad',
+    bullets: [
+      'Desarrollo y mantenimiento de plataformas web y móviles (Android/iOS) de logística y facturación electrónica con C# (.NET Core), React y APIs REST.',
+      'Soporte técnico en producción y mantenimiento evolutivo de múltiples soluciones SaaS empresariales.',
+      'Publicación y gestión de versiones móviles en App Store Connect (TestFlight) y Google Play Console.',
+      'Monitoreo y administración de instancias en la nube (AWS EC2) y ambientes productivos.',
+    ],
+  },
+  {
     company: 'Apptelink',
     role: 'Ingeniero de Desarrollo',
-    dates: 'Sep 2025 - Actualidad',
+    dates: 'Sep 2025 - Jun 2026',
     bullets: [
       'Soporte y mantenimiento de aplicaciones en producción, atendiendo incidencias y mejoras evolutivas.',
       'Desarrollo de funcionalidades para web con C# y .NET Framework, conectando con SQL Server.',
@@ -144,7 +172,6 @@ export const projects: Project[] = [
     image: 'https://niallodev.github.io/Commic-El-Pacto-de-los-Espectros/img/pagina_1_cuadro_1.jpg',
     links: [
       { label: 'Demo', href: 'https://niallodev.github.io/Commic-El-Pacto-de-los-Espectros/' },
-      { label: 'GitHub', href: 'https://github.com/niallodev/Commic-El-Pacto-de-los-Espectros' },
     ],
   },
 ];
